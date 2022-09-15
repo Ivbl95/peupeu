@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 export const data = {
     Python: {
         List: [
@@ -102,14 +103,27 @@ export const data = {
             {'let camelCase;': 'Каждое новое слово с большой буквы'},
             {'let ourPlanetName = "Earth"': 'Имя переменной должно описывать что внутри'}
         ],
-        DataTypes: [
-            {'': ''},
-            {'': ''},
-            {'': ''},
-            {'': ''},
-            {'': ''},
-            {'': ''},
+        TypeNumber: [
+            {'let n = 123;': 'Число'},
+            {'n = 1.23': 'С плавающей точкой'},
+            {'n = 1 / 0': 'Infinity. Бесконечность'},
+            {'n = \'str\' - 5': 'NaN. Вычислительная ошибка'},
         ],
+        TypeString: [
+            {'let s = \'some string\'': 'Строка'},
+            {'s = "some string 2"': 'Эти кавычки тоже подходят'},
+            {'s = `some ${typeof s} 3`': 'Кавычки для использования js в строке'},
+        ],
+        TypeBoolean: [
+            {'a = true': 'Имеет всего два значения'},
+            {'b = false': 'true и false (правда, неправда)'},
+        ],
+        Other: [
+            {'let a = Null': 'Null. Ничего, пусто'},
+            {'let b;': 'undefined. b не определена, только объявлена'},
+            {'let c = 12345601234567890n;': 'bigInt. Для больших чисел'},
+            {'typeof x': 'Вернет тип переменной в виде строки'},
+        ]
     },
     Jest: {
         Expect: [
