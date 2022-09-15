@@ -16,10 +16,10 @@ class App extends Component {
                 <div>30.08 Migration to React</div>
                 <div>31.08 FTP was added</div>
                 <div>12.09 Typescript was added</div>
+                <div>15.08 Git was added</div>
                 <h2>Plans</h2>
                 <div>Connecting to database</div>
                 <div>Adding redux</div>
-                <div>Adding git</div>
             </div>
         );
     }
