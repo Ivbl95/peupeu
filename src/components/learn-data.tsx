@@ -177,6 +177,38 @@ export const data = {
             {'this.setState((state: any) => ({ key: ++state.key }))': 'Change state value (only arrow functions or bind this)'},
         ],
     },
+    Redux: {
+        Actions: [
+            {'Actions': 'Action is an event that describes something that happened'},
+            {'const doSomeAction = { type: "where/whatToDo" }': 'An obj that has "type" prop that describe where/whatToDo'},
+            {'payload: "some"': 'Addictional prop of actions, it can has addictional info'},
+            {'const addTo = txt => { return { type: "..", payload: txt } }': 'Action creator, we use to not creating actions by hand'},
+        ],
+        Reducers: [
+            {'Reducer': 'It is a listener that desides how to change state looking on action'},
+            {'': 'They should only calculate the new state value'},
+            {'': 'They are not allowed to modify the existing state, only creating new'},
+            {'function nameOfRdcr(state, action) { return state }': 'Reducer without changing state'},
+            {'(state = { value: 0 }, action)': 'initial state'},
+            {'if (action.type = ".."){return: { ...state, a: ++state.a }}': 'If action is .. copy and return new state'},
+        ],
+        Store: [
+            {'Store': 'The current Redux application state lives in an object called the store'},
+            {'import { configureStore } from "@reduxjs/toolkit"': 'For using configureStore'},
+            {'const store = configureStore({reducer: nameOfRdcr})': 'Creating store by using reducer'},
+            {'store.getState()': 'Get current state from store'},
+        ],
+        Dispatch: [
+            {'store.dispatch({ type: "counter/increment" })': 'One way to update state by passing action object'},
+            {'const incr = () => { return { type: "/" } }': 'Function that returns action'},
+            {'store.dispatch(incr())': 'Call by using action foo'},
+        ],
+        Selectors: [
+            {'Selectors': 'Helps us to getting needable value from state'},
+            {'const selectValue = state => state.value': 'Returns value from state'},
+            {'const currentValue = selectCounterValue(store.getState())': 'Get needable value'},
+        ],
+    },
     Angular: {
         Installing: [
             {'ng new <project-name>': 'Installing a ng project by using cli'},
