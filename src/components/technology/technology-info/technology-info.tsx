@@ -14,7 +14,7 @@ export default class TechnologyInfo extends Component<TechnologyInfoProps, {}> {
             const technologyInfoArgs = { themeInfo: data[theme] };
 
             return(
-                <div className="theme">
+                <div className="theme" key={theme}>
                     <div>{theme}</div>
                     <TechnologyTheme {...technologyInfoArgs}/>
                 </div>

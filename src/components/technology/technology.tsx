@@ -15,11 +15,12 @@ export default function Technology(): JSX.Element {
                 }
                 
                 return(
-                    <div className="technology">
+                    <div className="technology" key={technology}>
                         <TechnologyInfo {...technologyArgs}/>
                     </div>
                 );
             }
+            return null;
         })};
     </>)
 }
