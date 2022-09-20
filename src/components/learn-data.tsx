@@ -123,7 +123,38 @@ export const data = {
             {'let b;': 'undefined. b не определена, только объявлена'},
             {'let c = 12345601234567890n;': 'bigInt. Для больших чисел'},
             {'typeof x': 'Вернет тип переменной в виде строки'},
-        ]
+        ],
+        Interaction: [
+            {'alert("Hello");': 'Вывод окна с информацией'},
+            {'result = prompt(title, default);': 'Получение информации от пользователя, вернет строку или null'},
+            {'result = confirm(question);': 'Вернет boolean'},
+            {'': 'Каждая из функций останавливает выполнение скрипта.'},
+        ],
+    },
+    JsAdv: {
+        Recursion: [
+            {'function foo(x, times) {': 'Foo calls recursion, times is recursion depth'},
+            {'return x === 1 : x ? x * foo(times - 1, x)}': 'Calling foo, while x != 1'},
+        ],
+        ExecutionContext: [
+            {'When a function makes a nested call, happens:': 'The current function is paused.'},
+            {'': 'The execution context is remembered in a execution context stack.'},
+            {'': 'The nested call executes (new context).'},
+            {'': 'Outer function is resumed from where it stopped.'},
+        ],
+        RestParameters: [
+            {'function sum(...rest) {': 'Rest is an array of all of parameters'},
+            {'return rest.reduce((p,c) => (p + c), 0);}': 'Reducing array to get common sum'},
+            {'sum(1, 23, 54, 13);': 'Calling, it cans contain different count of numbers'},
+            {'function some(first, second, ...rest) {}': 'First and second parameters as vars'},
+        ],
+        Spread: [
+            {'let arr = [1, 2, 3]; Math.max(...arr);': 'Spread arr to mathmax foo'},
+            {'Math.max(...arr1, 23, ...arr2, 2, 15)': 'Any count of arrays and values'},
+            {'let merge = [...arr1, ...arr2, 141]': 'Merge in a new var'},
+            {'let a = [..."Hello"]': 'Split string to letters'},
+            {'let copy = {...obj}': 'Copy arr or obj'},
+        ],
     },
     Jest: {
         Expect: [
