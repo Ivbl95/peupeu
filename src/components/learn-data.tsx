@@ -176,10 +176,36 @@ export const data = {
             {'let a = [..."Hello"]': 'Split string to letters'},
             {'let copy = {...obj}': 'Copy arr or obj'},
         ],
-        Scope: [
-            {'{ let a = 5 }; a = 7': 'Error, variable was declared in brackets'},
+        LexicalEnvironment: [
+            {'let some = 5;': 'some is a part of Environment Record (global)'},
+            {'': 'Global Environment Record hasnt outer Lexical environment'},
+            {'some = 6': 'Environment Record is changed, it has a new value'},
+        ],
+        FunctionDeclaration: [
+            {'': 'function hello is already a part of global Environment Record'},
+            {'let name = "Ivan"': 'name variable became a part of global Environment Record'},
+            {'function hello() { alert(`hello ${name}`) }': ''},
+        ],
+        InternalExternalLexicalEnvironment: [
+            {'': 'function hello is already a part of global Environment Record'},
+            {'let phrase = "Ivan"': '"name" variable became a part of global Environment Record'},
+            {'function hello() { alert(`${phrase} ${name}`) }': 'hello has own environment'},
+            {'hello("Ivan")': '"Ivan" is a part of Environment Record of hello'},
+            {'': '"phrase" is a part of global environment and outer environment of function'},
+            {'': 'when foo is running it looking for "phrase" in internal env then in outer'},
+            {'': 'when foo is running it use own current env each calling'},
+        ],
+        FooFromFoo: [
+            {'function makeCounter() {': '"makeCounter" has own env (ENV global)'},
+            {'let count = 0': '"count" became a part of "makeCounter" env'},
+            {'return function() { return ++count; } }': 'has own env and "makeCounter" as constant(ENV obj) outer'},
+            {'let counter = makeCounter();': '"counter" will have "makeCounter" as a constant outer env'},
+            {'counter()': '1// increase count'},
+            {'counter()': '2// increase count one more'},
+            {'': 'it happend because each calling of counter have same "makeCounter" env'},
+            {'': 'Замыкание - функция, что видит свои внешние переменные и имеет к ним доступ'},
         ]
-    },
+    },  
     Jest: {
         Expect: [
             {'.toEqual(expect.anything());': 'Не null, не undefined'},

@@ -21,6 +21,6 @@ export default function Technology(): JSX.Element {
                 );
             }
             return null;
-        })};
+        })}
     </>)
 }

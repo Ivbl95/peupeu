@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AppHeader from "../app-header/app-header";
-import './app.sass'
+import './app.sass';
 import Technology from "../technology/technology";
 
 class App extends Component {
