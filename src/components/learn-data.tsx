@@ -130,6 +130,27 @@ export const data = {
             {'result = confirm(question);': 'Вернет boolean'},
             {'': 'Каждая из функций останавливает выполнение скрипта.'},
         ],
+        TypeConversions: [
+            {'String(1)': '"1"'},
+            {'String(true)': '"true"'},
+            {'String(null)': '"null"'},
+            {'String(undefined)': '"undefined"'},
+            {'Number("1")': '1'},
+            {'Number(""': '0'},
+            {'Number("text")': 'NaN'},
+            {'Number(true)': '1'},
+            {'Number(false)': '0'},
+            {'Number(undefined)': 'NaN'},
+            {'Number(null)': '0'},
+            {'Boolean(0)': 'false'},
+            {'Boolean(1)': 'true'},
+            {'Boolean("")': 'false'},
+            {'Boolean("0")': 'true'},
+            {'Boolean(" ")': 'true'},
+            {'Boolean(null)': 'false'},
+            {'Boolean(undefined)': 'false'},
+            {'Boolean(NaN)': 'false'},
+        ]
     },
     JsAdv: {
         Recursion: [
@@ -155,6 +176,9 @@ export const data = {
             {'let a = [..."Hello"]': 'Split string to letters'},
             {'let copy = {...obj}': 'Copy arr or obj'},
         ],
+        Scope: [
+            {'{ let a = 5 }; a = 7': 'Error, variable was declared in brackets'},
+        ]
     },
     Jest: {
         Expect: [
@@ -197,7 +221,8 @@ export const data = {
             {'<div className="some"></div>': 'Имена классов в className, многострочные атрибуты camelCase'}
         ],
         Props: [
-            {'<Some name="Albert" surname="Petr">': 'Give info to a child'},
+            {'<Some name="Albert" surname="Petr" />': 'Pass info to a child'},
+            {'<Some onDelete={() => something} />': 'Pass foo to a child'},
             {'export interface Props { name: string, surname: string }': 'Interface of input props'},
             {'export default class Some extends Component<Props, {}>': 'Class with an interface'},
             {'const { name, surname } = this.props': 'Get props'},
@@ -206,6 +231,12 @@ export const data = {
             {'state = { key: value }': 'Set state'},
             {'const { key } = this.state': 'Get state'},
             {'this.setState((state: any) => ({ key: ++state.key }))': 'Change state value (only arrow functions or bind this)'},
+            {'': 'We should return new values in state, not changed old'},
+        ],
+        CSSModules: [
+            {'create App.module.css': 'creating module style file'},
+            {'import style from "./App.module.css";': 'Import requires declaration.d.ts if ts'},
+            {'<div className={style.className}></div>': 'Adding class to an element'},
         ],
     },
     Redux: {
@@ -291,10 +322,20 @@ export const data = {
             {'this.emitter.emit(data);': 'Pass data to parent foo'},
         ],
         LocalVariable: [
-
+            {'<child #child></child><div>{{child.data}}<div>': 'Get value from child'},
+            {'<child #child></child><p (click)="child.foo()"></p>': 'Invoke childs method'},
         ],
         ViewChild: [
-
+            {'@ViewChild(ChildComponent)': 'Get it'},
+            {'private childComponent: ChildComponent;': 'Put into var'},
+            {'ngAfterViewInit() { child.method() }': 'Use childs methods and props'},
         ],
-    }
+        Services: [
+            {'ng g c "way/name"': 'Create service by cli'},
+            {'export class NewService {}': 'Export service'},
+            {'import { NewService } from ...': 'Import service'},
+            {'constructor (private new: NewService) {}': 'Create an instance by DI'},
+            {'new.method()': 'Profit'},
+        ],
+    },
 }

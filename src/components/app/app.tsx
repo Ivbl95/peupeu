@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import AppHeader from "../app-header/app-header";
-import "bootstrap/dist/css/bootstrap.css"
 import './app.sass'
 import Technology from "../technology/technology";
 
