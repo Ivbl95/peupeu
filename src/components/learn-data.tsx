@@ -91,8 +91,12 @@ export const data = {
             {'for k, v in dict(a=5, b=2).items():': 'k будет ключи, v - значение'},
             {'for v in dict(a=5, b=2).values()': 'Итерирование значений 5, 2'},
             {'for i in list1: for y in list2:': 'Вложенный цикл'},
-            {'': ''},
         ],
+        ListComprehension: [
+            {'a = [l for l in "str"]': 'Вернет ["s", "t", "r"]'},
+            {'a = [l for l in range(5) if l < 3]': 'Вернет [0, 1, 2], исходя из условия'},
+            {'d = ["M" if num > 20 else "L" for num in [12, 30]]': 'Вернет ["L", M"]'},
+        ]
     },
     Js: {
         Variables: [
@@ -198,12 +202,21 @@ export const data = {
         FooFromFoo: [
             {'function makeCounter() {': '"makeCounter" has own env (ENV global)'},
             {'let count = 0': '"count" became a part of "makeCounter" env'},
-            {'return function() { return ++count; } }': 'has own env and "makeCounter" as constant(ENV obj) outer'},
+            {'return function() { return ++count; } }': 'it has own env and "makeCounter" as constant(ENV obj) outer'},
             {'let counter = makeCounter();': '"counter" will have "makeCounter" as a constant outer env'},
             {'counter()': '1// increase count'},
             {'counter()': '2// increase count one more'},
             {'': 'it happend because each calling of counter have same "makeCounter" env'},
             {'': 'Замыкание - функция, что видит свои внешние переменные и имеет к ним доступ'},
+        ],
+        Var: [
+            {'': '"a" already exist in global environment'},
+            {'var a = 5': '"a" have already existed in begin of function or script'},
+            {'var a = 7': 'its not a problem, we can redeclarate it a lot of times'},
+            {'': 'we can see "a" even if it is in enclose scope (like if or for)'},
+        ],
+        GlobalObject: [
+            {'': ''},
         ]
     },  
     Jest: {
@@ -264,6 +277,37 @@ export const data = {
             {'import style from "./App.module.css";': 'Import requires declaration.d.ts if ts'},
             {'<div className={style.className}></div>': 'Adding class to an element'},
         ],
+    },
+    ReactNew: {
+        HelloWorld: [
+            {'<div id="root"></div>': 'The root tag in index.html'},
+            {'const root = ReactDOM.createRoot(document.getElementById("root"));': 'Creating root index.tsx'},
+            {'root.render(<h1>Привет, мир!</h1>);': 'Render something index.tsx'},
+            {'': 'React compares new and old ReactDOM to render only changed elems'},
+        ],
+        JSX: [
+            {'const element = <h1>Привет, мир!</h1>;': 'Example of declaring JSX element'},
+            {'const element = <h1>Здравствуй, {name}!</h1>;': 'Inserting any JS code'},
+            {'function foo() { return <a>123</a> }': 'JSX is also JS expression, we can use it inside if for etc'},
+            {'const element = <img src={user.avatarUrl}></img>;': 'Using attributes'},
+            {'const element = (<div><div></div></div>)': 'Circle brackets for multiline expression'},
+            {'const element = React.createElement("h1","text")': 'React.createElement does same as simple appropriation'},
+        ],
+        CompsNProps: [
+            {'function foo(props) { return <div>{props.name}</div> }': 'React component as a function'},
+            {'class Cls extends React.Component {': ''},
+            {'constructor(props) { super(props) }': 'If we are adding constructor, we must write this'},
+            {'render() { return <div>{props.name}</div> }}': 'React component as a class'},
+            {'const element = <Myclass name="Алиса" />;': 'Send data to a child'},
+            {'': 'We shouldnt change props in execution time (components are pure)'},
+        ],
+        StateNLifeCycle: [
+            {'this.state = { ... }': 'Starting set state'},
+            {'componentDidMount() {}': 'Works after first mounting (after rendering)'},
+            {'componentWillUnmount() {}': 'Works before destruct of DOM node'},
+            {'this.setState((state, props) =>': ''},
+            {'({ some: state.a + props.b }))': 'How to set state properly, it invokes rendering'},
+        ]
     },
     Redux: {
         Actions: [
@@ -363,5 +407,26 @@ export const data = {
             {'constructor (private new: NewService) {}': 'Create an instance by DI'},
             {'new.method()': 'Profit'},
         ],
+        CSSSelector: [
+            {':host {}': 'Using for this component and its children'},
+            {':host(.active) {}': 'Using for this component, if it has .active class'},
+            {':host h2 {}': 'Using for children h2'},
+            {':host-context(selector) {}': 'It works same :host, only if any parent has this selector'},
+            {'::ng-deep h2 {}': 'This style works as a global style for all of app'},
+            {':host ::ng-deep h2 {}': 'This style works as a global style for the comp and its children'},
+            {'@import "../../some.css";': 'Import external css file into the current css file'},
+        ],
+        SingleSlotContentProjection: [
+            {'<child>123</child>': 'Passing to the child'},
+            {'<ng-content></ng-content>': 'Getting from the parent'},
+        ],
+        MultiSlotContentProjection: [
+            {'<child><div some>123</div></child>': 'Passing to the child ng-content that have "some" selector'},
+            {'<child><div>456</div></child>': 'Passing to the child ng-content without selector '},
+            {'<ng-content select="[some]"></ng-content>': '123'},
+            {'<ng-content></ng-content>': '456'},
+        ],
+        ConditionalContentProjection: [
+        ]
     },
 }
