@@ -236,8 +236,35 @@ export const data = {
             {'': 'we can see "a" even if it is in enclose scope (like if or for)'},
         ],
         GlobalObject: [
-            {'': ''},
-        ]
+            {'globalThis': 'Its the common way to get access to the global object(browser, node etc)'},
+            {'var a = 5; window.a': 'After creating, var became a part of globalThis'},
+            {'window.Promise': 'Checking browser to support'},
+        ],
+        FunctionObject: [
+            {'function foo() {}; foo.name': '"foo" is name of the function'},
+            {'foo.length': 'Arguments count'},
+            {'foo.counter = 0': 'Creating addictional props for foo'},
+        ],
+        newFunction: [
+            {'let sum = new Function("a", "b", "return a + b");': 'Creating new foo by strings during of execution'},
+            {'sum(1,2)': 'Returns 3'},
+        ],
+        setTimeoutSetInterval: [
+            {'let a = setTimeout(nameOfFoo, delay, arg1, arg2 ..)': 'Creating timeout'},
+            {'clearTimeout(a)': 'Removing timeout before execution'},
+            {'let a = setInterval(nameOfFoo, delay, arg1, arg2 ..)': 'Creating interval'},
+            {'clearInterval(a)': 'Removing interval before or during execution(no matter)'},
+            {'setTimeout(() => alert("Мир"));': 'It will be working after end of execution of script'},
+        ],
+        FunctionCache: [
+            {'function slow(x) { return x ** 2; }': 'Slow function'},
+            {'function funcCache(func) {': 'New cache function'},
+            {'let cache = new Map();': 'Cache is inside funcCache env'},
+            {'return function (x) {': 'Cache is in outer env'},
+            {'if (cache.has(x)) return cache.get(x);': 'Check map'},
+            {'let result = func(x); cache.set(x, result); return result': 'Save and return result'},
+            {'}} slow = funcCache(slow);': 'Add cache possibility to slow func'},
+        ],
     },  
     Jest: {
         Expect: [
@@ -447,6 +474,12 @@ export const data = {
             {'<ng-content></ng-content>': '456'},
         ],
         ConditionalContentProjection: [
+            {'<child><ng-template d>..</ng-template></child>': 'd - is directive selector, pass info to child'},
+            {'@Directive({selector: "[d]"})': 'Creating directive'},
+            {'public info: TemplateRef<unknown>': 'Getting info from parent ng-template to the directive'},
+            {'@ContentChild(DirectiveName) c: DirectiveName': 'Getting directive info'},
+            {'<ng-container [ngTemplateOutlet]="c.info"></n..>': 'Accepting info from directive'},
+            {'': 'ng-content always renders content, ng-container by condition'},
         ]
     },
 }
