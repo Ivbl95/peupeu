@@ -104,6 +104,18 @@ export const data = {
             {'continue': 'Перейти к следующей итерации немедленно'},
             {'pass': 'Заглушка для пустого цикла'},
         ],
+        InternalFunctions: [
+            {'abs(-1) abs(1)': 'Вернет такое же положительное число'},
+            {'max(1,2,3) min([1,2,3])': 'Вернет максимальное и минимальное число'},
+            {'pow(2, 8)': 'Вернет 2 в 8-ой степени'},
+            {'round(1.23, 1) round(1.2)': 'Вернет округленное 1.2 и 1'},
+            {'sum([1,2,3])': 'Вернет сумму элементов списка, не принимает просто числа без списка'},
+            {'hex(42) oct(42) bin(42)': 'Вернет число в шетндарцатитрчной / восьмеричной / двоичной системе'},
+            {'all([...])': 'Принимает список из boolean, вернет True если все из них True, иначе False'},
+            {'any([...])': 'Принимает список из boolean, вернет True если хоть один из них True, иначе False'},
+            {'a = zip("abs", (1,2,3)) list(a) dict(a)': 'Вернет список из склеинных tuple или dict, оптимизированное склеивание'},
+            {'ord("a") chr(97)': 'Вернет его позицию в unicode и наоборот'},
+        ]
     },
     Js: {
         Variables: [
@@ -354,6 +366,15 @@ export const data = {
             {'componentWillUnmount() {}': 'Works before destruct of DOM node'},
             {'this.setState((state, props) =>': ''},
             {'({ some: state.a + props.b }))': 'How to set state properly, it invokes rendering'},
+        ],
+        HandlingEvents: [
+            {'onClick={foo}': 'Handler camelCase, pass foo without brackets'},
+            {'function handleSubmit(e) { e.preventDefault(); }': 'Prevent only inside foo'},
+            {'this.handleClick = this.handleClick.bind(this);': 'This binding is necessary to make `this` work in the callback'},
+            {'onClick={() => foo()}': 'The way to not binding foo '},
+            {'<button onClick={(e) => this.foo(id, e)}></button>': ''},
+            {'<button onClick={this.foo.bind(this, id)}></button>': 'Ways to passing data to foo'},
+            {'': ''},
         ]
     },
     Redux: {
