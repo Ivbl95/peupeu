@@ -134,6 +134,18 @@ export const data = {
         Scope: [
             {'a = 5 def foo(): a = 6 print(a)': 'a отсанется 5 так как язык берет значение из текущего окружения'},
             {'def foo():global a a = 6': 'работать с переменной глобального окружения'},
+        ],
+        Decorators: [
+            {'from functools import wraps': ''},
+            {'def decorator_name():': ''},
+            {'--@wraps(func)': 'Способ сохранить имя функции при декорировании'},
+            {'--def wrap(*args, **kwargs):': ''},
+            {'----print("start")': ''},
+            {'----func(*args, **kwargs)': ''},
+            {'----print("finish")': ''},
+            {'--return wrap': 'Cпособ создать декоратор'},
+            {'@decorator_name': ''},
+            {'def foo(): print(123)': 'Способ добавить декоратор к функции'},
         ]
     },
     Js: {
@@ -287,15 +299,23 @@ export const data = {
             {'clearInterval(a)': 'Removing interval before or during execution(no matter)'},
             {'setTimeout(() => alert("Мир"));': 'It will be working after end of execution of script'},
         ],
-        FunctionCache: [
+        FunctionCacheDecorator: [
             {'function slow(x) { return x ** 2; }': 'Slow function'},
-            {'function funcCache(func) {': 'New cache function'},
+            {'function funcCache(func) {': 'Function Decorator'},
             {'let cache = new Map();': 'Cache is inside funcCache env'},
             {'return function (x) {': 'Cache is in outer env'},
             {'if (cache.has(x)) return cache.get(x);': 'Check map'},
             {'let result = func(x); cache.set(x, result); return result': 'Save and return result'},
             {'}} slow = funcCache(slow);': 'Add cache possibility to slow func'},
         ],
+        Call: [
+            {'foo.call(this, ...args)': 'Pass context to called function, args can be object'},
+            {'foo.apply(this, args)': 'Pass context to called function, args must be array'},
+            {'let key = "arg1 + "," + arg2"': 'If we have more then 1 arg to cache, we can hash it'},
+            {'[].join.call(arguments)': 'Way to hash pseudo-array'},
+            {'': 'Passing all arguments along with the context is called call forwarding.'},
+            {'Decorators': 'transparentCache, spyOn, debounce, delay'}
+        ]
     },  
     Jest: {
         Expect: [
@@ -520,6 +540,26 @@ export const data = {
             {'@ContentChild(DirectiveName) c: DirectiveName': 'Getting directive info'},
             {'<ng-container [ngTemplateOutlet]="c.info"></n..>': 'Accepting info from directive'},
             {'': 'ng-content always renders content, ng-container by condition'},
+        ],
+        DynamicComponents:[],
+        AngularElements: [],
+        Interpolation: [
+            {'<p>{{ myVar }}</p>': 'Pass data from component to template as text'},
+            {'<img src="{{ myLink }}">': 'Pass data from component to template as text attribute'},
+        ],
+        UnderstandingBinding: [
+            {'Change Detection': 'Change Detection is responsible for keeping the view and the model in sync.'},
+            {'Binding include': 'Text interpolation, property binding, event binding, two-way binding'},
+            {'$event, *ngFor="let cus of cuss", #tempVar': 'Template vars is first'},
+            {'directiveVar': 'Directive vars is second'},
+            {'componentVar': 'Component vars is third'},
+            {'Idemportant Expression': 'Idempotent expression always returns the same thing until one of its values changes.'},
+        ],
+        Bindings: [
+            {'<div [attr.nameOfAttr]="expression"></div>': ''},
+            {'': ''},
+            {'': ''},
+            {'': ''},
         ]
     },
 }
