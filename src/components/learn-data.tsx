@@ -308,13 +308,39 @@ export const data = {
             {'let result = func(x); cache.set(x, result); return result': 'Save and return result'},
             {'}} slow = funcCache(slow);': 'Add cache possibility to slow func'},
         ],
-        Call: [
+        CallApplyBind: [
             {'foo.call(this, ...args)': 'Pass context to called function, args can be object'},
             {'foo.apply(this, args)': 'Pass context to called function, args must be array'},
             {'let key = "arg1 + "," + arg2"': 'If we have more then 1 arg to cache, we can hash it'},
             {'[].join.call(arguments)': 'Way to hash pseudo-array'},
             {'': 'Passing all arguments along with the context is called call forwarding.'},
-            {'Decorators': 'transparentCache, spyOn, debounce, delay'}
+            {'Decorators': 'transparentCache, spyOn, debounce, delay'},
+            {'some = func.bind(context)': 'some have a func with right context'},
+        ],
+        ArrowFuncSpecials: [
+            {'(() => ())': 'Don\'t have this'},
+            {'': 'Can\'t be called with new'},
+            {'': 'Don\'t have arguments obj'},
+            {'': 'Don\'t have super'},
+        ],
+        Descriptors: [
+            {'Object.getOwnPropertyDescriptor(user, "name");': 'get “property descriptor” obj'},
+            {'Object.defineProperty(user, "name", {..: ..})': 'set “property descriptor”'},
+            {'{writable: false}': 'property is read-only'},
+            {'{enumerable: false}': 'property is not iterable'},
+            {'{configurable: false}': 'prop descriptors is not changable(only write on=>off), and prop is not delitable'},
+            {'Object.defineProperties(user, {': ''},
+            {'--name: {value: "Myafa", configurable: false}': ''},
+            {'--age: {value: 3, writable: true}})': 'define many props'},
+            {'Object.getOwnPropertyDescriptors(user)': 'get “property descriptors” obj'},
+            {'let clone = Object.defineProperties({': ''},
+            {'}, Object.getOwnPropertyDescriptors(user));': 'clone obj with descriptor”'},
+        ],
+        SealingObjectGlobally: [
+            {'Object.preventExtensions(obj)': 'Forbids the addition of new properties to the object.'},
+            {'Object.seal(obj)': 'Forbids add/remove props, make all of props non-configurable'},
+            {'Object.freeze(obj)': 'Forbids add/remove/change props, make all of props non-configurable & non-writable'},
+            {'Object.isExtensible(obj), Object.isSealed(obj), Object.isFrozen(obj)': 'check, return bool'},
         ]
     },  
     Jest: {
@@ -556,10 +582,23 @@ export const data = {
             {'Idemportant Expression': 'Idempotent expression always returns the same thing until one of its values changes.'},
         ],
         Bindings: [
-            {'<div [attr.nameOfAttr]="expression"></div>': ''},
-            {'': ''},
-            {'': ''},
-            {'': ''},
+            {'<div [attr.nameOfAttr]="expression"></div>': 'bind attr'},
+            {'<div [class.className]="expression"></div>': 'bind single class'},
+            {'<div [class]="classExpression"></div>': '"class1 class2"'},
+            {'<div [class]="classExpression"></div>': '{class1: true, class2: false}'},
+            {'<div [class]="classExpression"></div>': '["class1", "class2"]'},
+            {'<div [style.styleName]="value"></div>': 'bind single class'},
+            {'<div [style.width.px]="value"></div>': 'bind in units'},
+            {'<div [style]="styleExpression"></div>': '"width: 100px; height: 100px;"'},
+            {'<div [style]="styleExpression"></div>': '{width: "100px", height: "100px"}'},
+            {'<button (click)="onSave()">Save</button>': 'bind event to foo'},
+            {'<img alt="item" [src]="urltext">': 'bind url to src prop'},
+        ],
+        TwoWayBindings: [
+            {'<child [(name)]="name"></child>': 'PARENT TwoWayBind'},
+            {'@Input() name: string;': 'CHILD accept name'},
+            {'@Output() changeName = new Emitter<string>()': 'CHILD pass changing'},
+            {'changeName.emit("newName")': 'CHILD change name'},
         ]
     },
 }
