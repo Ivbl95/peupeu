@@ -146,6 +146,13 @@ export const data = {
             {'--return wrap': 'Cпособ создать декоратор'},
             {'@decorator_name': ''},
             {'def foo(): print(123)': 'Способ добавить декоратор к функции'},
+        ],
+        Try: [
+            {'try: 4 / 0': 'Попытка выполнить код'},
+            {'except Exception as ex: print(ex)': 'Если в try ошибка, выполнится этот блок (отловить ошибку и ее тип)'},
+            {'finally:': 'Выполняется всегда, после выполнения блоков try / except'},
+            {'raise TypeError("description")': 'Вызвать ошибку какого либо типа с ее описанием'},
+            {'class SomeError(Exception): """description"""': 'Создать конструктор класса ошибки'},
         ]
     },
     Js: {
@@ -597,8 +604,16 @@ export const data = {
         TwoWayBindings: [
             {'<child [(name)]="name"></child>': 'PARENT TwoWayBind'},
             {'@Input() name: string;': 'CHILD accept name'},
-            {'@Output() changeName = new Emitter<string>()': 'CHILD pass changing'},
+            {'@Output() nameChange = new EventEmitter<string>()': 'CHILD pass changing'},
             {'changeName.emit("newName")': 'CHILD change name'},
+        ],
+        Pipe: [
+            {'{{value | pipe:format}}': 'Using pipes'},
+            {'{{date | date:"dd-MM-yyyy"}}': 'Example'},
+            {'{{amount | currency:"EUR"}}': 'Example'},
+            {'{{text | uppercase}}': 'Example'},
+            {'{{value | async}}': 'getting value from async primitive'},
+            {'https://angular.io/api/common#pipes': 'pipes'},
         ]
     },
 }
