@@ -669,6 +669,18 @@ export const data = {
             {'<input #some>': 'Get var into some'},
             {'<button (click)="pass(some.value)"><button>': 'Pass some value to component'},
             {'<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">': 'Value of itemForm is not form element, it is instance of ngForm'},
+        ],
+        DirectivesTypes: [
+            {'Component Directive': 'Using with templates'},
+            {'Attribute Direcitve': 'Change appereance and behavior of an element, component, directive'},
+            {'Structure Directive': 'Change DOM layout by adding and removing elems from DOM'},
+        ],
+        BuiltInAttributeDirectives: [
+            {'[ngClass]="true: "class": "otherClass""': 'Choosing the right class'},
+            {'[ngClass]="{class: true, otherClass: false}"': 'We can pass an object with classes'},
+            {'[ngStyle]="{color: true ? "red" : "blue"}"': 'We can pass an object with styles'},
+            {'[(ngModel)]="name"': 'We can change name two ways'},
+            {'[ngModel]="name" (ngModelChange)="foo($event)"': 'Dividing prop and event'},
         ]
     },
 }
