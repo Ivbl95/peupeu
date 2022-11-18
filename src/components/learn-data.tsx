@@ -153,6 +153,30 @@ export const data = {
             {'finally:': 'Выполняется всегда, после выполнения блоков try / except'},
             {'raise TypeError("description")': 'Вызвать ошибку какого либо типа с ее описанием'},
             {'class SomeError(Exception): """description"""': 'Создать конструктор класса ошибки'},
+        ],
+        CreatingClass: [
+            {'class TreeFruit:': 'Каждое слово в названии класса с большой буквы'},
+            {'--def __init__(self, name, color=yellow):': 'Конструктор класса, принимает в аргументы сам класс и свойства'},
+            {'----self.name = name': 'Создание атрибута (переменной) внутри класса'},
+            {'----self.age = 0': 'Создание атрибута (переменной) внутри класса'},
+            {'--def fall(age): ...': 'Метод того что фрукт упадет при определенном возрасте'},
+            {'banana = TreeFruit("Banana")': 'Создать экземпляр класса'},
+            {'mango = TreeFruit("Mango")': 'Создать еще один независимый экземпляр'},
+        ],
+        PrivateAttr: [
+            {'PI = 3.14': 'Атрибуты констант капслоком'},
+            {'_protected': 'Защищенный атрибут (запись и чтение из класса и наследников)'},
+            {'__private': 'Приватный атрибут (запись и чтение из класса)'},
+            {'@property def private(self): return self.__private': 'Доступ к чтению свойства'},
+            {'@private.setter def private(self, value): pass': 'Сеттер для свойства'},
+        ],
+        StaticMethods: [
+            {'': ''},
+            {'': ''},
+            {'': ''},
+            {'': ''},
+            {'': ''},
+            {'': ''},
         ]
     },
     Js: {
@@ -348,6 +372,32 @@ export const data = {
             {'Object.seal(obj)': 'Forbids add/remove props, make all of props non-configurable'},
             {'Object.freeze(obj)': 'Forbids add/remove/change props, make all of props non-configurable & non-writable'},
             {'Object.isExtensible(obj), Object.isSealed(obj), Object.isFrozen(obj)': 'check, return bool'},
+        ],
+        AccessorProperties: [
+            {'let user = {': ''},
+            {'--name: "Myafa",': ''},
+            {'--surname: "Puflyandskaya",': ''},
+            {'--get fullName() { return this.name + this.surname }': 'Accessor that get name'},
+            {'--set fullName(value) {': ''},
+            {'----[this.name, this.surname] = value.split(" ")]; },}; ': 'Accessor that set name'},
+            {'': 'Object got new two descriptors get and set instead writible and value'},
+            {'set name(value) { if (value.length) this._name = value }': ' properties starting with "_" should not be touched from outside'}
+        ],
+        PrototypalInheritance: [
+            {'child.__proto__ = parent': 'It is the antient getter/setter of [[Prototype]] property'},
+            {'childOfChild.__proto__ = child': 'childOfChild has all of methods and props of child and parent'},
+            {'let user = {': ''},
+            {'--get name() { return this._name }': ''},
+            {'--set name(value) { this._name = value }': 'we can use getter/setter as inherited method'},
+            {'parent = { name: "some" }': ''},
+            {'child = { __proto__: parent }': ''},
+            {'child.name = "smthng"': 'parent name is not changed, we can not write/delete inherited props, only read'},
+        ],
+        PrototypalInheritanceThis: [
+            {'animal = { phrase: "Hello", say() { return this.phrase } }': ''},
+            {'rabbit = { __proto__: animal }': ''},
+            {'rabbit.say()': 'undefined // "this" is always the rabbit'},
+            {'animal.say()': 'Hello // "this" is always the animal'},
         ]
     },  
     Jest: {
@@ -614,6 +664,11 @@ export const data = {
             {'{{text | uppercase}}': 'Example'},
             {'{{value | async}}': 'getting value from async primitive'},
             {'https://angular.io/api/common#pipes': 'pipes'},
+        ],
+        TemplateVar: [
+            {'<input #some>': 'Get var into some'},
+            {'<button (click)="pass(some.value)"><button>': 'Pass some value to component'},
+            {'<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">': 'Value of itemForm is not form element, it is instance of ngForm'},
         ]
     },
 }
